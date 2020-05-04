@@ -2,7 +2,12 @@
 `mkvextract tracks 11.mkv 0:video.mp4 1:audio.mp3`
 
 ### Convert 264-10bit to 8bit
-`ffmpeg -i input -c:v libx264 -crf 18 -vf format=yuv420p -c:a copy output.mkv`
+`ffmpeg -i input.avc -c:v libx264 -crf 18 -vf format=yuv420p -c:a copy output.mp4`
+Use GPU for encoder
+`ffmpeg -i video.avc -c:v libx264 -crf 18 -vf format=yuv420p -c:a copy -vcodec h264_nvenc video-8bit.mp4`
+
+### Convert audio to aac
+`ffmpeg -i audio.flac -acodec libfaac audio.aac`
 
 ### Merging video, audio and subs
 `ffmpeg -i video.avc -i audio.flac -vf ass=sub.ass output.mp4`
