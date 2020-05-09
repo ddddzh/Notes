@@ -28,6 +28,9 @@ GPU can't merge sub layer with video layer. To do so, need to remove "-hwaccel c
 
 `ffmpeg -vsync 0 -vcodec h264_cuvid -i 2-video.mp4 -i 2-audio.aac -acodec copy -vcodec h264_nvenc  -vf ass=sub.ass output.mp4`
 
+### Hardcode ASS subtitle into MP4
+Need parameter as `-vf ass=sub.ass`.
+If use in Windows with absolute path, need to escape signs in path. e.g `'C\:\\1-sub\\sub.ass'`
 
 ### Compare video quality
 Package itu-p1203
